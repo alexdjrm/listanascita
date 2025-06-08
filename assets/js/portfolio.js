@@ -8,28 +8,26 @@ async function loadPortfolio() {
     }
 
     try {
-        const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTOn9otKjhzVGt2GAhMWyuBVHLp69ylhUbIQwgTTflXIxmyfy2Oyv0Aubhj0-yQ2q-60lyS42ayRboL/pub?output=csv');
+        const response = await fetch('assets/js/listaNascita - Sheet1.tsv');
         const text = await response.text();
         const rows = text.trim().split('\n');
 
         rows.forEach(row => {
-            const [filter, title, subtitle, imgUrl, linkUrl] = row.split('$');
+            const [title, subtitle, imgUrl, linkUrl] = row.split('\t');
 
             const item = document.createElement('div');
-            item.className = `col-lg-4 col-md-6 portfolio-item isotope-item ${filter}`;
+            item.className = `col-lg-4 col-md-6 portfolio-item isotope-item filter-app`;
 
             item.innerHTML = `
-                <img src="${imgUrl}" class="img-fluid" alt="${title}">
+                <h5 class="text-center">${title}</h5>
+                <a href="${linkUrl}">
+                    <img src="${imgUrl}" class="img-fluid" style="width: 300px; height: auto;" alt="${title}">
+                </a>
                 <div class="portfolio-info">
-                    <h4>${title}</h4>
-                    <p>${subtitle}</p>
-                    <a href="${imgUrl}" title="${title}" data-gallery="portfolio-gallery" class="glightbox preview-link">
-                        <i class="bi bi-zoom-in"></i>
-                    </a>
-                    <a href="${linkUrl}" title="More Details" class="details-link">
-                        <i class="bi bi-link-45deg"></i>
-                    </a>
+                    ${subtitle}
                 </div>
+
+
             `;
 
             container.appendChild(item);
@@ -49,7 +47,7 @@ async function loadPortfolio() {
         });
 
         // Inizializza Glightbox
-        if (window.GLightbox) GLightbox({ selector: '.glightbox' });
+        if (window.GLightbox) GLightbox({selector: '.glightbox'});
 
     } catch (err) {
         console.error('Errore nel caricamento del CSV:', err);
