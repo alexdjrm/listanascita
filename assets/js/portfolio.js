@@ -19,15 +19,14 @@ async function loadPortfolio() {
             item.className = `col-lg-4 col-md-6 portfolio-item isotope-item filter-app`;
 
             item.innerHTML = `
-                <h5 class="text-center">${title}</h5>
+                <h5 class="text-center regalo-btn" data-nome-regalo="${title}" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#bonificoModal">${title}                    
+                <i class="fas fa-gift icon-gift text-primary ms-2 regalo-btn" data-nome-regalo="${title}" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#bonificoModal"></i></h5>
                 <a href="${linkUrl}">
                     <img src="${imgUrl}" class="img-fluid" style="width: 300px; height: auto;" alt="${title}">
                 </a>
-                <div class="portfolio-info">
+                <div class="portfolio-info regalo-btn" data-nome-regalo="${title}" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#bonificoModal" >
                     ${subtitle}
                 </div>
-
-
             `;
 
             container.appendChild(item);

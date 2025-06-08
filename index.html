@@ -18,7 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
 
 
     <!-- Vendor CSS Files -->
@@ -59,7 +58,9 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-getstarted" href="https://revolut.me/alexdjrm" target="_blank">Paga con carta</a>
+        <a class="btn-getstarted regalo-btn" href="https://revolut.me/alexdjrm" target="_blank"
+           data-nome-regalo="<Indica una casuale>" style="cursor: pointer;" data-bs-toggle="modal"
+           data-bs-target="#bonificoModal">Fai un regalo</a>
 
     </div>
 </header>
@@ -73,7 +74,7 @@
 
             <div class="row gy-4">
                 <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
-                    <img src="assets/img/site/20250529_155340_cut.jpg" class="img-fluid" alt="">
+                    <img src="assets/img/site/20250529_155340_cut.jpg" class="img-fluid image-home" alt="">
                 </div>
                 <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
                     <h3>La nostra bimba sta per arrivare!</h3>
@@ -81,22 +82,16 @@
                         Siamo super emozionati in questi giorni, e non vediamo l'ora di incontrarla per la prima volta.
                         Stiamo organizzando al meglio questo momento importante rifornendoci di tutto cio che serve per
                         accoglierla.
-                        Per quest (con un po' di ritardo) abbiamo finalmente messo on-line questa lista di cose belle,
-                        che
-                        permetterà a chi lo desidera di regalare qualcosa alla piccolina :)
+                        Per questo motivo (...e con un po' di ritardo) abbiamo finalmente messo on-line questa lista di cose belle,
+                        che permetterà a chi lo desidera di regalare qualcosa alla piccolina :)
                     </p>
                     <p>
-                        <b>IMPORTANTE</b> per regalarci un oggetto, potete utilizzare due metodi:
-                    </p>
-                    <ul>
-                        <li><i class="bi bi-check2-all"></i> <span>Bonifico bancario classico</span>
-                        </li>
-                        <li><i class="bi bi-check2-all"></i> <span>Pagamento con carta di credito</span>
-                            <a class="btn-getstarted" data-bs-toggle="modal" data-bs-target="#bonificoModal">
-                                Paga con bonifico
-                            </a>
-                        </li>
-                    </ul>
+                        Per fare un regalo potete utilizzare due metodi o un <span
+                            class="accent"> bonifico bancario </span> classico o un pagamento per <span class="accent">carta di credito</span></span>
+                    <h6 style="font-style: italic">
+                        <b>Importante:</b> questa lista è completamente gestita da noi, dopo che avrete fatto il vostro regalo, noi lo ritireremo a mano,
+                        quindi non preoccupatevi se gli oggetti restano visibili, li rimuoveremo appena possibile.
+                    </h6>
                 </div>
             </div>
 
@@ -114,11 +109,6 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <p>Ecco la lista di regali che abbiamo scelto per la nostra bambina.</p>
-                    <p>
-                        <b>IMPORTANTE</b> questa lista è stata creata da noi, abbiamo aggiunto le cose che ci servono e
-                        che ci piacciono e le ritireremo manualmente mano mano che saranno regalate.
-                        Quindi non preoccupatevi se gli oggetti restano visibili, li rimuoveremo appena possibile.
-                    </p>
                 </div>
             </div>
 
@@ -174,27 +164,40 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="bonificoModalLabel">Dati per il bonifico</h5>
+                <h5 class="modal-title" id="bonificoModalLabel">Come fare un regalo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
             </div>
 
             <div class="modal-body">
-                <p>
-                    <strong>Intestatario:</strong> Mario Rossi
-                    <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="Mario Rossi" style="cursor: pointer;"></i>
-                </p>
-                <p>
-                    <strong>IBAN:</strong> IT60X0542811101000000123456
-                    <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="IT60X0542811101000000123456" style="cursor: pointer;"></i>
-                </p>
-                <p>
-                    <strong>Banca:</strong> Intesa Sanpaolo
-                    <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="Intesa Sanpaolo" style="cursor: pointer;"></i>
-                </p>
-                <p>
-                    <strong>Causale:</strong> Regalo battesimo
-                    <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="Regalo battesimo" style="cursor: pointer;"></i>
-                </p>
+                <h5 class="modal-title">Bonifico bancario</h5>
+                <div class="ps-3 pt-2">
+                    <p>
+                        <strong>Intestatario:</strong> Mario Rossi
+                        <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="Mario Rossi"
+                           style="cursor: pointer;"></i>
+                    </p>
+                    <p>
+                        <strong>IBAN:</strong> IT60X0542811101000000123456
+                        <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="IT60X0542811101000000123456"
+                           style="cursor: pointer;"></i>
+                    </p>
+                    <p>
+                        <strong>Banca:</strong> Intesa Sanpaolo
+                        <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="Intesa Sanpaolo"
+                           style="cursor: pointer;"></i>
+                    </p>
+                    <p>
+                        <strong>Causale:</strong> <span id="causaleText">Regalo battesimo</span>
+                        <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="Regalo battesimo"
+                           style="cursor: pointer;"></i>
+                    </p>
+                </div>
+
+                <h5 class="modal-title pt-2">Carta di credito</h5>
+                <div class="ps-3 pt-2">
+                    <a href="https://revolut.me/alexdjrm" target="_blank"> Clicca qui per utilizzare una carta di
+                        credito <i class="fas fa-credit-card"></i></a>
+                </div>
             </div>
 
             <div class="modal-footer">
@@ -205,8 +208,6 @@
     </div>
 </div>
 </body>
-
-
 
 
 </html>
