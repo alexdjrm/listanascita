@@ -13,7 +13,7 @@ async function loadPortfolio() {
         const rows = text.trim().split('\n');
 
         rows.forEach(row => {
-            const [title, subtitle, imgUrl, linkUrl] = row.split('\t');
+            const [id, active,title, subtitle, imgUrl, linkUrl] = row.split('\t');
 
             const item = document.createElement('div');
             item.className = `col-lg-4 col-md-6 portfolio-item isotope-item filter-app`;
