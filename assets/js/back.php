@@ -21,10 +21,8 @@ if (!file_exists($listaPath)) {
 }
 
 $righe = array_map(function($line) {
-    return mb_convert_encoding($line, 'UTF-8', 'auto');
+    return mb_convert_encoding($line, 'UTF-8', 'Windows-1252');
 }, file($listaPath, FILE_IGNORE_NEW_LINES));
-$nuove_righe = [];
-$titoloOggetto = null;
 
 foreach ($righe as $riga) {
     $cols = explode("\t", $riga);

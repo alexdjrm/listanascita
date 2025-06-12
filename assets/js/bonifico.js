@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const donorMessageInput = document.getElementById('donorMessage');
     const donorNameSection = document.getElementById('donorNameSection');
     const donorMessageSection = document.getElementById('donorMessageSection');
+    const donorItemList = document.getElementById('donorItemList');
     const confirmCheckboxSection = document.getElementById('confirmCheckboxSection');
     const confirmCheckbox = document.getElementById('confirmCheckbox');
     const causaleTextElement = document.getElementById('causaleText');
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 confirmCheckboxSection.style.display = 'block';
                 btnSegna.style.display = 'inline-block';
                 btnSegna.disabled = !confirmCheckbox.checked;
+                donorItemList.style.display = 'none';
             } else {
                 idCorrente = null;
                 btnSegna.style.display = 'none';
@@ -62,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 donorMessageSection.style.display = 'none';
                 confirmCheckboxSection.style.display = 'none';
                 btnSegna.disabled = true;
+                donorItemList.style.display = 'block';
             }
         }
     });
