@@ -8,7 +8,7 @@ async function loadPortfolio() {
     }
 
     try {
-        const response = await fetch('assets/js/lista.tsv');
+        const response = await fetch('assets/js/lista.tsv', { cache: 'no-store' });
         const text = await response.text();
         const rows = text.trim().split('\n');
 
@@ -69,7 +69,7 @@ async function loadPortfolio() {
 }
 
 function verificaModificaTSV(id, tentativi = 10) {
-    fetch('assets/js/lista.tsv')
+    fetch('assets/js/lista.tsv', { cache: 'no-store' })
         .then(res => res.text())
         .then(text => {
             const rows = text.trim().split('\n');

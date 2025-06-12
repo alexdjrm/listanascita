@@ -2,7 +2,8 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: text/plain");
+header("Content-Type: text/plain; charset=utf-8");
+
 
 if (!isset($_POST['id']) || !ctype_digit($_POST['id'])) exit("ID non valido");
 $id = $_POST['id'];
@@ -20,9 +21,7 @@ if (!file_exists($listaPath)) {
     exit("File lista.tsv non trovato");
 }
 
-$righe = array_map(function($line) {
-    return mb_convert_encoding($line, 'UTF-8', 'Windows-1252');
-}, file($listaPath, FILE_IGNORE_NEW_LINES));
+$righe = file($listaPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 foreach ($righe as $riga) {
     $cols = explode("\t", $riga);
@@ -33,7 +32,7 @@ foreach ($righe as $riga) {
     $nuove_righe[] = implode("\t", $cols);
 }
 
-file_put_contents($listaPath, implode("\n", $nuove_righe));
+file_put_contents($listaPath, implode("\n", $nuove_righe), LOCK_EX);
 
 if ($titoloOggetto !== null) {
     $timestamp = date('Y-m-d H:i:s'); // ⏱️ formato data e ora
