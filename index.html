@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css">
 
 
     <!-- Vendor CSS Files -->
@@ -48,7 +49,6 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
         <a href="index.html" class="logo d-flex align-items-center me-auto">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt=""> -->
             <h1 class="sitename">Lista Nascita</h1>
         </a>
@@ -61,6 +61,16 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
+        <div class="d-flex align-items-center me-3">
+            <a href="#" class="btn btn-sm btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#donFrModal" title="Informations en français">
+                FR
+            </a>
+            <a href="#" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#donEnShortModal" title="Information in English">
+                EN
+            </a>
+        </div>
+
+        <!-- Bottone regalo -->
         <a class="btn-getstarted regalo-btn" href="https://revolut.me/alexdjrm" target="_blank"
            data-nome-regalo="Indica una casuale" style="cursor: pointer;" data-bs-toggle="modal"
            data-bs-target="#bonificoModal">Fai un regalo</a>
@@ -255,5 +265,55 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="donFrModal" tabindex="-1" aria-labelledby="donFrModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="donFrModalLabel">Comment offrir un cadeau</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+                <p class="mb-3">
+                    Eh oui... le site est en italien... mais il est assez simple à utiliser : en gros, il faut d'abord effectuer le paiement par virement bancaire ou par carte bancaire (les informations sont accessibles en cliquant sur les icônes en forme de cadeau). Un pop-up avec les détails s’ouvrira. En rouge, vous trouverez le lien pour payer par carte.
+                </p>
+                <p>
+                    Une fois le paiement effectué, vous pouvez retirer l'article de la liste en inscrivant votre nom, en cochant la case "Paiement effectué" et en cliquant sur "Marquer comme pris".
+                </p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="donEnShortModal" tabindex="-1" aria-labelledby="donEnShortModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="donEnShortModalLabel">How to Make a Gift</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <p class="mb-3">
+                    Yes... the site is in Italian... but it's quite simple: basically, you need to make the payment first, either by bank transfer or credit card (the details appear when you click the gift icons). A pop-up with the instructions will open. The credit card payment link is highlighted in red.
+                </p>
+                <p>
+                    Once the payment is complete, you can remove the item from the list by entering your name, ticking the "Payment made" box, and clicking on "Mark as taken".
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

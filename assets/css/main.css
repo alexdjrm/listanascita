@@ -296,7 +296,7 @@ h6 {
 /* Navmenu - Desktop */
 @media (min-width: 1200px) {
   .navmenu {
-    padding: 0;
+    padding: 10px;
   }
 
   .navmenu ul {
