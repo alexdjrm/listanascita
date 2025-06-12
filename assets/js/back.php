@@ -20,7 +20,9 @@ if (!file_exists($listaPath)) {
     exit("File lista.tsv non trovato");
 }
 
-$righe = file($listaPath, FILE_IGNORE_NEW_LINES);
+$righe = array_map(function($line) {
+    return mb_convert_encoding($line, 'UTF-8', 'auto');
+}, file($listaPath, FILE_IGNORE_NEW_LINES));
 $nuove_righe = [];
 $titoloOggetto = null;
 
@@ -36,7 +38,8 @@ foreach ($righe as $riga) {
 file_put_contents($listaPath, implode("\n", $nuove_righe));
 
 if ($titoloOggetto !== null) {
-    $donorLine = implode("\t", [$id, $titoloOggetto, $nomeDonatore, $messaggio]);
+    $timestamp = date('Y-m-d H:i:s'); // ⏱️ formato data e ora
+    $donorLine = implode("\t", [$timestamp,  $nomeDonatore, $id, $titoloOggetto, $messaggio]);
     file_put_contents($donorsPath, $donorLine . "\n", FILE_APPEND | LOCK_EX);
 }
 
