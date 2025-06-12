@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmCheckboxSection = document.getElementById('confirmCheckboxSection');
     const confirmCheckbox = document.getElementById('confirmCheckbox');
     const causaleTextElement = document.getElementById('causaleText');
-    const copyIcon = causaleTextElement?.nextElementSibling;
+    const importoTextElement = document.getElementById('importoText');
+    const bonificoModalLabel = document.getElementById('bonificoModalLabel');
+    const importoCopyIcon = importoTextElement?.nextElementSibling;
+    const causaleCopyIcon = causaleTextElement?.nextElementSibling;
 
     // Copia negli appunti
     document.querySelectorAll('.copy-icon').forEach(icon => {
@@ -37,20 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const idRegalo = target.getAttribute('data-id-regalo');
         const prezzo = target.getAttribute('data-prezzo');
 
-        if (target.classList.contains('icon-gift')) {
-            const conferma = confirm(`Vuoi regalarci "${nomeRegalo}" per "${prezzo}"?`);
-            if (!conferma) return;
-        }
-
-        if (nomeRegalo && causaleTextElement) {
+        if (nomeRegalo && causaleTextElement && prezzo) {
+            importoTextElement.textContent = prezzo;
             causaleTextElement.textContent = nomeRegalo;
             nomeRegaloCorrente = nomeRegalo;
-            if (copyIcon) copyIcon.setAttribute('data-copy', nomeRegalo);
+            if (importoCopyIcon) importoCopyIcon.setAttribute('data-copy', prezzo);
+            if (causaleCopyIcon) causaleCopyIcon.setAttribute('data-copy', nomeRegalo);
         }
 
         if (btnSegna) {
             if (idRegalo) {
                 idCorrente = idRegalo;
+                bonificoModalLabel.textContent = `${nomeRegalo} ${prezzo}`
                 donorNameSection.style.display = 'block';
                 donorMessageSection.style.display = 'block';
                 confirmCheckboxSection.style.display = 'block';

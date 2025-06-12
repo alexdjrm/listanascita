@@ -176,28 +176,33 @@
                 </p>
 
                 <h5 class="modal-title">Bonifico bancario</h5>
-                <div class="ps-3 pt-2">
-                    <p>
+                <div class="ps-3 pt-2 bonifico-area">
+                    <p class="bonifico-text">
                         <strong>Intestatario:</strong> M FENICIO A - Mme RITACCO A
                         <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="FENICIO A - Mme RITACCO A"
                            style="cursor: pointer;"></i>
                     </p>
-                    <p>
+                    <p class="bonifico-text">
                         <strong>IBAN:</strong> FR76 4061 8803 4000 0400 6307 408
                         <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="FR7640618803400004006307408"
                            style="cursor: pointer;"></i>
                     </p>
-                    <p>
+                    <p class="bonifico-text">
                         <strong>BIC / SWIFT :</strong> BOUS FRPP XXX
                         <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="BOUSFRPPXXX"
                            style="cursor: pointer;"></i>
                     </p>
-                    <p>
+                    <p class="bonifico-text">
                         <strong>Banca:</strong> BoursoBank
                         <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="BoursoBank"
                            style="cursor: pointer;"></i>
                     </p>
-                    <p>
+                    <p class="bonifico-text">
+                        <strong>Importo:</strong> <span id="importoText"></span>
+                        <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy=""
+                           style="cursor: pointer;"></i>
+                    </p>
+                    <p class="bonifico-text">
                         <strong>Causale:</strong> <span id="causaleText"></span>
                         <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy=""
                            style="cursor: pointer;"></i>
@@ -205,34 +210,33 @@
                 </div>
 
                 <h5 class="modal-title pt-2">Carta di credito</h5>
-                <div class="ps-3 pt-2">
-                    <a href="https://revolut.me/alexdjrm" target="_blank">
+                <div class="ps-3 pt-2 bonifico-area">
+                    <a class="bonifico-text" href="https://revolut.me/alexdjrm" target="_blank">
                         Clicca qui per utilizzare una carta di credito <i class="fas fa-credit-card"></i>
                     </a>
                 </div>
                 <div class="mt-3">
-                    <p><strong>Una volta completato il pagamento</strong>, segui questi passaggi:</p>
+                    <p class="bonifico-text"><strong>Una volta completato il pagamento</strong>:</p>
                     <ul><span id="donorItemList">
                         <li>Clicca sull'icona regalo dell'oggetto</li></span>
                         <li>Inserisci il tuo nome</li>
                         <li>Scrivi un bigliettino digitale</li>
-                        <li>Spunta la casella <em>"Confermo di aver completato il pagamento"</em></li>
-                        <li>Clicca su <em>“Segna come preso”</em></li>
+                        <li>Spunta la casella <em>"Pagamento effettuato"</em></li>
+                        <li>Clicca su <em>“Segna come preso”</em> per ritirarlo dalla lista</li>
                     </ul>
-                    <p>In questo modo, l’oggetto sarà ritirato dalla lista.</p>
                 </div>
                 <div id="donorNameSection" style="display:none;" class="pt-2">
                     <label for="donorName" class="form-label">Il tuo nome e cognome:</label>
                     <input type="text" class="form-control" id="donorName" placeholder="Il tuo nome">
                 </div>
                 <div id="donorMessageSection" style="display:none;" class="pt-2">
-                    <label for="donorMessage" class="form-label">Scrivi un bigliettino (opzionale):</label>
-                    <textarea class="form-control" id="donorMessage" rows="3" placeholder="Tanti auguri alla piccola!"></textarea>
+                    <label for="donorMessage" class="form-label">Scrivi un bigliettino:</label>
+                    <input type="text" class="form-control" id="donorMessage" placeholder="(opzionale)">
                 </div>
                 <div id="confirmCheckboxSection" class="form-check mt-3" style="display:none;">
                     <input class="form-check-input" type="checkbox" id="confirmCheckbox">
                     <label class="form-check-label" for="confirmCheckbox">
-                        Confermo di aver completato il pagamento
+                        Pagamento effettuato
                     </label>
                 </div>
             </div>

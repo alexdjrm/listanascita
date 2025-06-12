@@ -19,7 +19,13 @@ async function loadPortfolio() {
             const item = document.createElement('div');
             item.className = `col-lg-4 col-md-6 portfolio-item isotope-item filter-app`;
             item.innerHTML = `
-                <h5 class="text-center regalo-btn" data-id-regalo="${id}" data-nome-regalo="${title}" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#bonificoModal">
+                <h5 class="text-center regalo-btn" 
+                       data-id-regalo="${id}" 
+                       data-nome-regalo="${title}"
+                       data-prezzo="${subtitle}" 
+                       style="cursor: pointer;" 
+                       data-bs-toggle="modal" 
+                       data-bs-target="#bonificoModal">
                     ${title}
                     <i class="fas fa-gift icon-gift text-primary ms-2 regalo-btn"
                        data-id-regalo="${id}"
@@ -32,8 +38,12 @@ async function loadPortfolio() {
                 <a href="${linkUrl}" target="_blank">
                     <img src="${imgUrl}" class="img-fluid" style="width: 300px; height: auto;" alt="${title}">
                 </a>
-                <div class="portfolio-info regalo-btn" data-id-regalo="${id}" data-nome-regalo="${title}" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#bonificoModal">
-                    ${subtitle}
+                <div class="portfolio-info regalo-btn" 
+                       data-id-regalo="${id}"
+                       data-nome-regalo="${title}"
+                       data-prezzo="${subtitle}"
+                       style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#bonificoModal">
+                       ${subtitle}
                 </div>
             `;
             container.appendChild(item);
