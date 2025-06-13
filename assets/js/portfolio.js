@@ -35,9 +35,21 @@ async function loadPortfolio() {
                        data-bs-toggle="modal"
                        data-bs-target="#bonificoModal"></i>
                 </h5>
-                <a href="${linkUrl}" target="_blank">
-                    <img src="${imgUrl}" class="img-fluid" style="width: 300px; height: auto;" alt="${title}">
-                </a>
+                <!-- <a href="${linkUrl}" target="_blank"> -->
+                    <img 
+                      src="${imgUrl}" 
+                      class="img-fluid regalo-btn"
+                      style="width: 300px; 
+                      height: auto;
+                      cursor: pointer;" 
+                      alt="${title}"
+                      data-id-regalo="${id}"
+                      data-nome-regalo="${title}"
+                      data-prezzo="${subtitle}"
+                      data-bs-toggle="modal"
+                      data-bs-target="#bonificoModal"
+                    />
+                <!-- </a> -->
                 <div class="portfolio-info regalo-btn" 
                        data-id-regalo="${id}"
                        data-nome-regalo="${title}"

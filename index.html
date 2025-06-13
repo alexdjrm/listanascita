@@ -4,6 +4,36 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script>
+        const version = '20250613';
+
+        // Ottieni il valore di `v` nella query string (se presente)
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentV = urlParams.get('v');
+
+        // Se manca ?v= oppure è diverso da quello atteso → redirect
+        if (!currentV || currentV !== version) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const newUrl = baseUrl + '?v=' + version;
+            window.location.replace(newUrl);
+        }
+
+        // Dopo il redirect, aggiungi ?v= anche a CSS/JS locali
+        window.addEventListener('DOMContentLoaded', () => {
+            const addVersion = (selector, attr) => {
+                document.querySelectorAll(selector).forEach(el => {
+                    const src = el.getAttribute(attr);
+                    if (src && (src.startsWith('assets/') || src.startsWith('./assets/'))) {
+                        const separator = src.includes('?') ? '&' : '?';
+                        el.setAttribute(attr, src + separator + 'v=' + version);
+                    }
+                });
+            };
+
+            addVersion('link[rel="stylesheet"]', 'href');
+            addVersion('script[src]', 'src');
+        });
+    </script>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -71,9 +101,9 @@
         </div>
 
         <!-- Bottone regalo -->
-        <a class="btn-getstarted regalo-btn" href="https://revolut.me/alexdjrm" target="_blank"
+<!--        <a class="btn-getstarted regalo-btn" href="https://revolut.me/alexdjrm" target="_blank"
            data-nome-regalo="Indica una casuale" style="cursor: pointer;" data-bs-toggle="modal"
-           data-bs-target="#bonificoModal">Fai un regalo</a>
+           data-bs-target="#bonificoModal">Fai un regalo</a>-->
 
     </div>
 </header>
@@ -102,7 +132,6 @@
                     <p>
                         Per fare un regalo cliccate sull'icona forma di regalo 🎁 o sul titolo poi scegliete se fare un<span
                             class="accent"> bonifico bancario </span> classico o un pagamento per <span class="accent">carta di credito</span>.
-                        I dettagli sono disponibili cliccando il bottone in alto "Fai un regalo".
                     </p>
                     <p>
                         Una volta fatto questo potete eliminare il regalo dalla lista, mettendo il vostro nome, spuntando la casella "Pagamento effettuato" e cliccando su <em>"Segna come pagato"</em>.
@@ -174,9 +203,9 @@
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
 <!-- Main JS File -->
-<script src="assets/js/main.js?v=20250613"></script>
-<script src="assets/js/portfolio.js?v=20250613"></script>
-<script src="assets/js/bonifico.js?v=20250613"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/portfolio.js"></script>
+<script src="assets/js/bonifico.js"></script>
 <div class="modal fade" id="bonificoModal" tabindex="-1" aria-labelledby="bonificoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -187,11 +216,6 @@
             </div>
 
             <div class="modal-body">
-                <p class="mb-3">
-                    Per fare un regalo, realizza un bonifico o un pagamento per carta di credito, dell'importo di uno
-                    degli oggetti della lista.<br>
-                </p>
-
                 <h5 class="modal-title">Bonifico bancario</h5>
                 <div class="ps-3 pt-2 bonifico-area">
                     <p class="bonifico-text">
@@ -214,13 +238,13 @@
                         <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy="BoursoBank"
                            style="cursor: pointer;"></i>
                     </p>
-                    <p class="bonifico-text">
-                        <strong>Importo:</strong> <span id="importoText"></span>
+                    <p class="bonifico-text" id="causale-div">
+                        <strong>Importo:</strong> Scrivi una causale <span id="importoText"></span>
                         <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy=""
                            style="cursor: pointer;"></i>
                     </p>
-                    <p class="bonifico-text">
-                        <strong>Causale:</strong> <span id="causaleText"></span>
+                    <p class="bonifico-text" id="importo-div">
+                        <strong>Causale:</strong> indica l'importo <span id="causaleText"></span>
                         <i class="fas fa-copy text-primary ms-2 copy-icon" data-copy=""
                            style="cursor: pointer;"></i>
                     </p>
