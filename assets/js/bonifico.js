@@ -4,8 +4,10 @@ let nomeRegaloCorrente = null;
 document.addEventListener('DOMContentLoaded', () => {
     const btnSegna = document.getElementById('btnSegnaComePreso');
     const donorNameInput = document.getElementById('donorName');
+    const donorContactInput = document.getElementById('donorContact');
     const donorMessageInput = document.getElementById('donorMessage');
     const donorNameSection = document.getElementById('donorNameSection');
+    const donorContactSection = document.getElementById('donorContactSection');
     const donorMessageSection = document.getElementById('donorMessageSection');
     const donorItemList = document.getElementById('donorItemList');
     const confirmCheckboxSection = document.getElementById('confirmCheckboxSection');
@@ -55,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 idCorrente = idRegalo;
                 bonificoModalLabel.textContent = `${nomeRegalo} ${prezzo}`
                 donorNameSection.style.display = 'block';
+                donorContactSection.style.display = 'block';
                 donorMessageSection.style.display = 'block';
                 confirmCheckboxSection.style.display = 'block';
                 importoDivElement.style.display = 'block';
@@ -66,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 idCorrente = null;
                 btnSegna.style.display = 'none';
                 donorNameSection.style.display = 'none';
+                donorContactSection.style.display = 'none';
                 donorMessageSection.style.display = 'none';
                 confirmCheckboxSection.style.display = 'none';
                 importoDivElement.style.display = 'none';
@@ -85,8 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btnSegna?.addEventListener('click', () => {
         if (!idCorrente) return alert("Errore: oggetto non identificato.");
         const nome = donorNameInput?.value.trim();
+        const contatto = donorContactInput?.value.trim();
         const messaggio = donorMessageInput?.value.trim() || '';
-        if (!nome) return alert("Per favore inserisci il tuo nome e cognome.");
+        if (!nome || !contatto) return alert("Per favore inserisci il tuo nome cognome e recapito.");
 
         const conferma = confirm(`Confermi di ritirare l'oggetto "${nomeRegaloCorrente}" dalla lista?`);
         if (!conferma) return;
@@ -94,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('assets/js/back.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ id: idCorrente, nome: nome, messaggio: messaggio })
+            body: new URLSearchParams({ id: idCorrente, nome: nome, messaggio: messaggio, contatto:contatto })
         })
             .then(res => res.text())
             .then(data => {
@@ -115,11 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
         idCorrente = null;
         nomeRegaloCorrente = null;
         donorNameInput.value = '';
+        donorContactInput.value = '';
         donorMessageInput.value = '';
         confirmCheckbox.checked = false;
         btnSegna.disabled = true;
         btnSegna.style.display = 'none';
         donorNameSection.style.display = 'none';
+        donorContactSection.style.display = 'none';
         donorMessageSection.style.display = 'none';
         confirmCheckboxSection.style.display = 'none';
     });

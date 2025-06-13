@@ -11,7 +11,12 @@ $id = $_POST['id'];
 $nomeDonatore = isset($_POST['nome']) ? trim($_POST['nome']) : '';
 if ($nomeDonatore === '') exit("Nome donatore mancante");
 
+$contattoDonatore = isset($_POST['contatto']) ? trim($_POST['contatto']) : '';
+if ($contattoDonatore === '') exit("Contatto donatore mancante");
+
 $messaggio = isset($_POST['messaggio']) ? trim($_POST['messaggio']) : '';
+
+
 
 $listaPath = __DIR__ . '/lista.tsv';
 $donorsPath = __DIR__ . '/donors.tsv';
@@ -36,7 +41,7 @@ file_put_contents($listaPath, implode("\n", $nuove_righe), LOCK_EX);
 
 if ($titoloOggetto !== null) {
     $timestamp = date('Y-m-d H:i:s'); // ⏱️ formato data e ora
-    $donorLine = implode("\t", [$timestamp,  $nomeDonatore, $id, $titoloOggetto, $messaggio]);
+    $donorLine = implode("\t", [$timestamp,  $nomeDonatore, $contattoDonatore, $id, $titoloOggetto, $messaggio]);
     file_put_contents($donorsPath, $donorLine . "\n", FILE_APPEND | LOCK_EX);
 }
 
