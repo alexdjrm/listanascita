@@ -19,44 +19,44 @@ async function loadPortfolio() {
             const item = document.createElement('div');
             item.className = `col-lg-4 col-md-6 portfolio-item isotope-item filter-app`;
             item.innerHTML = `
-                <h5 class="text-center regalo-btn" 
-                       data-id-regalo="${id}" 
-                       data-nome-regalo="${title}"
-                       data-prezzo="${subtitle}" 
-                       style="cursor: pointer;" 
-                       data-bs-toggle="modal" 
-                       data-bs-target="#bonificoModal">
-                    ${title}
-                    <i class="fas fa-gift icon-gift text-primary ms-2 regalo-btn"
-                       data-id-regalo="${id}"
-                       data-nome-regalo="${title}"
-                       data-prezzo="${subtitle}"
-                       style="cursor: pointer;"
-                       data-bs-toggle="modal"
-                       data-bs-target="#bonificoModal"></i>
-                </h5>
-                <!-- <a href="${linkUrl}" target="_blank"> -->
-                    <img 
-                      src="${imgUrl}" 
-                      class="img-fluid regalo-btn"
-                      style="width: 300px; 
-                      height: auto;
-                      cursor: pointer;" 
-                      alt="${title}"
-                      data-id-regalo="${id}"
-                      data-nome-regalo="${title}"
-                      data-prezzo="${subtitle}"
-                      data-bs-toggle="modal"
-                      data-bs-target="#bonificoModal"
-                    />
-                <!-- </a> -->
-                <div class="portfolio-info regalo-btn" 
-                       data-id-regalo="${id}"
-                       data-nome-regalo="${title}"
-                       data-prezzo="${subtitle}"
-                       style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#bonificoModal">
-                       ${subtitle}
-                </div>
+              <h5 class="text-center regalo-btn" 
+                  data-id-regalo="${id}" 
+                  data-nome-regalo="${title}"
+                  data-prezzo="${subtitle}" 
+                  style="cursor: pointer;" 
+                  data-bs-toggle="modal" 
+                  data-bs-target="#bonificoModal">
+                ${title}
+                <i class="fas fa-gift icon-gift text-primary ms-2 regalo-btn"
+                   data-id-regalo="${id}"
+                   data-nome-regalo="${title}"
+                   data-prezzo="${subtitle}"
+                   style="cursor: pointer;"
+                   data-bs-toggle="modal"
+                   data-bs-target="#bonificoModal"></i>
+              </h5>
+            
+              <img 
+                src="${imgUrl}" 
+                class="img-fluid regalo-btn"
+                style="width: 300px; height: auto; cursor: pointer;" 
+                alt="${title}"
+                data-id-regalo="${id}"
+                data-nome-regalo="${title}"
+                data-prezzo="${subtitle}"
+                data-bs-toggle="modal"
+                data-bs-target="#bonificoModal"
+              />
+            
+              <div class="portfolio-info regalo-btn" 
+                   data-id-regalo="${id}"
+                   data-nome-regalo="${title}"
+                   data-prezzo="${subtitle}"
+                   style="cursor: pointer;" 
+                   data-bs-toggle="modal" 
+                   data-bs-target="#bonificoModal">
+                ${subtitle}
+              </div>
             `;
             container.appendChild(item);
         });
