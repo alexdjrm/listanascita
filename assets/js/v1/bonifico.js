@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Gestione click su elemento regalo
     document.addEventListener('click', (event) => {
         const target = event.target.closest('.regalo-btn');
-        if (!target) return;
+        if (!target || event.target.closest('a')) return;
 
         const nomeRegalo = target.getAttribute('data-nome-regalo');
         const idRegalo = target.getAttribute('data-id-regalo');

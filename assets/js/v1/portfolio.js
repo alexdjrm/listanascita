@@ -26,13 +26,12 @@ async function loadPortfolio() {
             const item = document.createElement('div');
             item.className = `col-lg-4 col-md-6 portfolio-item isotope-item filter-app`;
             item.innerHTML = `
-          <h5 class="text-center regalo-btn" 
+          <h5 class="text-center" 
               data-id-regalo="${id}" 
               data-nome-regalo="${title}"
               data-prezzo="${subtitle}" 
-              style="cursor: pointer;" 
-              data-bs-toggle="modal" 
-              data-bs-target="#bonificoModal">
+              style="cursor: pointer;"
+              >
             ${title}
             <a href="${linkUrl}" target="_blank" class="ms-2" title="Apri link del prodotto">
               <i class="fas fa-link text-secondary"></i>
