@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         idCorrente = idRegalo;
         nomeRegaloCorrente = nomeRegalo;
+        prezzoCorrente = prezzo;
 
         // Popola la modale
         importoTextElement.textContent = prezzo;
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         formError.style.display = 'none';
 
-        const conferma = confirm(`Confermi di ritirare l'oggetto "${nomeRegaloCorrente}" dalla lista?`);
+        const conferma = confirm(`Confermi di aver realizzato il pagamento di "${prezzoCorrente}" e di voler rimuovere l'oggetto "${nomeRegaloCorrente}" dalla lista?`);
         if (!conferma) return;
 
         fetch('assets/js/back.php', {
