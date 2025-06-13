@@ -6,16 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const donorNameInput = document.getElementById('donorName');
     const donorContactInput = document.getElementById('donorContact');
     const donorMessageInput = document.getElementById('donorMessage');
-    const donorNameSection = document.getElementById('donorNameSection');
-    const donorContactSection = document.getElementById('donorContactSection');
-    const donorMessageSection = document.getElementById('donorMessageSection');
-    const donorItemList = document.getElementById('donorItemList');
-    const confirmCheckboxSection = document.getElementById('confirmCheckboxSection');
-    const confirmCheckbox = document.getElementById('confirmCheckbox');
     const causaleTextElement = document.getElementById('causaleText');
     const importoTextElement = document.getElementById('importoText');
-    const importoDivElement = document.getElementById('importo-div');
-    const causaleDivElement = document.getElementById('causale-div');
     const bonificoModalLabel = document.getElementById('bonificoModalLabel');
     const importoCopyIcon = importoTextElement?.nextElementSibling;
     const causaleCopyIcon = causaleTextElement?.nextElementSibling;
@@ -35,63 +27,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Gestione click su elemento regalo
+    // Click su un regalo
     document.addEventListener('click', (event) => {
         const target = event.target.closest('.regalo-btn');
-        if (!target || event.target.closest('a')) return;
+        if (!target) return;
 
         const nomeRegalo = target.getAttribute('data-nome-regalo');
         const idRegalo = target.getAttribute('data-id-regalo');
         const prezzo = target.getAttribute('data-prezzo');
 
-        if (nomeRegalo && causaleTextElement && prezzo) {
-            importoTextElement.textContent = prezzo;
-            causaleTextElement.textContent = nomeRegalo;
-            nomeRegaloCorrente = nomeRegalo;
-            if (importoCopyIcon) importoCopyIcon.setAttribute('data-copy', prezzo);
-            if (causaleCopyIcon) causaleCopyIcon.setAttribute('data-copy', nomeRegalo);
-        }
+        if (!idRegalo || !nomeRegalo || !prezzo) return;
 
-        if (btnSegna) {
-            if (idRegalo) {
-                idCorrente = idRegalo;
-                bonificoModalLabel.textContent = `${nomeRegalo} ${prezzo}`
-                donorNameSection.style.display = 'block';
-                donorContactSection.style.display = 'block';
-                donorMessageSection.style.display = 'block';
-                confirmCheckboxSection.style.display = 'block';
-                importoDivElement.style.display = 'block';
-                causaleDivElement.style.display = 'block';
-                btnSegna.style.display = 'inline-block';
-                btnSegna.disabled = !confirmCheckbox.checked;
-                donorItemList.style.display = 'none';
-            } else {
-                idCorrente = null;
-                btnSegna.style.display = 'none';
-                donorNameSection.style.display = 'none';
-                donorContactSection.style.display = 'none';
-                donorMessageSection.style.display = 'none';
-                confirmCheckboxSection.style.display = 'none';
-                importoDivElement.style.display = 'none';
-                causaleDivElement.style.display = 'none';
-                btnSegna.disabled = true;
-                donorItemList.style.display = 'block';
-            }
-        }
+        idCorrente = idRegalo;
+        nomeRegaloCorrente = nomeRegalo;
+
+        // Popola la modale
+        importoTextElement.textContent = prezzo;
+        causaleTextElement.textContent = nomeRegalo;
+        if (importoCopyIcon) importoCopyIcon.setAttribute('data-copy', prezzo);
+        if (causaleCopyIcon) causaleCopyIcon.setAttribute('data-copy', nomeRegalo);
+        bonificoModalLabel.textContent = `${nomeRegalo} ${prezzo}`;
+
     });
 
-    // Abilitazione pulsante
-    confirmCheckbox?.addEventListener('change', () => {
-        btnSegna.disabled = !confirmCheckbox.checked;
-    });
-
-    // Invio
+    // Invia conferma regalo
     btnSegna?.addEventListener('click', () => {
-        if (!idCorrente) return alert("Errore: oggetto non identificato.");
         const nome = donorNameInput?.value.trim();
         const contatto = donorContactInput?.value.trim();
         const messaggio = donorMessageInput?.value.trim() || '';
-        if (!nome || !contatto) return alert("Per favore inserisci il tuo nome cognome e recapito.");
+        const formError = document.getElementById('formError');
+
+        if (!nome || !contatto) {
+            formError.textContent = "⚠️ Inserisci il tuo nome e recapito.";
+            formError.style.display = 'block';
+            return;
+        }
+
+        formError.style.display = 'none';
 
         const conferma = confirm(`Confermi di ritirare l'oggetto "${nomeRegaloCorrente}" dalla lista?`);
         if (!conferma) return;
@@ -99,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('assets/js/back.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ id: idCorrente, nome: nome, messaggio: messaggio, contatto:contatto })
+            body: new URLSearchParams({ id: idCorrente, nome: nome, messaggio: messaggio, contatto: contatto })
         })
             .then(res => res.text())
             .then(data => {
@@ -122,12 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
         donorNameInput.value = '';
         donorContactInput.value = '';
         donorMessageInput.value = '';
-        confirmCheckbox.checked = false;
-        btnSegna.disabled = true;
-        btnSegna.style.display = 'none';
-        donorNameSection.style.display = 'none';
-        donorContactSection.style.display = 'none';
-        donorMessageSection.style.display = 'none';
-        confirmCheckboxSection.style.display = 'none';
+
+        const formError = document.getElementById('formError');
+        if (formError) {
+            formError.style.display = 'none';
+            formError.textContent = '';
+        }
     });
 });
