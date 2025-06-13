@@ -1791,6 +1791,11 @@ section,
   padding: 1rem;
   border: solid 1px lightgray;
 }
+@media (max-width: 767px) {
+  .main {
+    padding-top: 100px; /* o quanto basta a evitare che l'immagine venga coperta */
+  }
+}
 
 /*--------------------------------------------------------------
 # Starter Section Section
