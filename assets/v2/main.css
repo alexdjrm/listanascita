@@ -1806,3 +1806,12 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+.btn-update-page {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 400;
+  border-radius: 5px;
+  padding: 2px;
+  border: none;
+}
